@@ -1,0 +1,23 @@
+services:
+  backend:
+    build:
+      context: ./hire-radar-backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:sqlite:/app/data/hire-radar.db
+      DISCORD_WEBHOOK_URL: ${DISCORD_WEBHOOK_URL:-}
+      SCRAPING_FIXED_DELAY_MS: ${SCRAPING_FIXED_DELAY_MS:-3600000}
+    volumes:
+      - hire-radar-data:/app/data
+    ports:
+      - "8080:8080"
+
+  frontend:
+    build:
+      context: ./hire-radar-frontend
+    depends_on:
+      - backend
+    ports:
+      - "5173:80"
+
+volumes:
+  hire-radar-data:

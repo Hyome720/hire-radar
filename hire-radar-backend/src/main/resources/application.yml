@@ -1,0 +1,31 @@
+server:
+  port: ${SERVER_PORT:8080}
+
+spring:
+  application:
+    name: hire-radar
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:sqlite:./hire-radar.db}
+    driver-class-name: org.sqlite.JDBC
+  jpa:
+    database-platform: org.hibernate.community.dialect.SQLiteDialect
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+    show-sql: false
+  sql:
+    init:
+      mode: always
+      encoding: UTF-8
+
+scraping:
+  initial-delay-ms: ${SCRAPING_INITIAL_DELAY_MS:15000}
+  fixed-delay-ms: ${SCRAPING_FIXED_DELAY_MS:3600000}
+
+notification:
+  discord:
+    webhook-url: ${DISCORD_WEBHOOK_URL:}
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
