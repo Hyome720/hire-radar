@@ -1,4 +1,4 @@
-import { CompanyForm } from '../components/CompanyForm'
+﻿import { CompanyForm } from '../components/CompanyForm'
 import { Filters } from '../components/Filters'
 import { PostingsTable } from '../components/PostingsTable'
 import { useHireRadar } from '../hooks/useHireRadar'
@@ -39,12 +39,10 @@ export function Dashboard() {
         companyId={radar.companyId}
         openOnly={radar.openOnly}
         sortMode={radar.sortMode}
-        loading={radar.loading}
         onQueryChange={radar.setQuery}
         onCompanyChange={radar.setCompanyId}
         onOpenOnlyChange={radar.setOpenOnly}
         onSortModeChange={radar.setSortMode}
-        onScrape={radar.runScrape}
       />
 
       {radar.message && <p className="notice">{radar.message}</p>}

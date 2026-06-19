@@ -1,11 +1,10 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+﻿import { useCallback, useEffect, useMemo, useState } from 'react'
 import {
   type Company,
   type PostingSummary,
   createCompany,
   getCompanies,
   getPostings,
-  scrapeNow,
 } from '../services/api'
 
 export function useHireRadar() {
@@ -53,19 +52,6 @@ export function useHireRadar() {
     await load()
   }
 
-  async function runScrape() {
-    setLoading(true)
-    try {
-      const saved = await scrapeNow()
-      setMessage(`신규 공고 ${saved.length}건을 저장했습니다.`)
-      await load()
-    } catch {
-      setMessage('수집 중 오류가 발생했습니다.')
-    } finally {
-      setLoading(false)
-    }
-  }
-
   return {
     companies,
     postings: sortedPostings,
@@ -80,7 +66,6 @@ export function useHireRadar() {
     loading,
     message,
     addCompany,
-    runScrape,
     reload: load,
   }
 }

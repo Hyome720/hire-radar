@@ -5,7 +5,6 @@ services:
     environment:
       SPRING_DATASOURCE_URL: jdbc:sqlite:/app/data/hire-radar.db
       DISCORD_WEBHOOK_URL: ${DISCORD_WEBHOOK_URL:-}
-      SCRAPING_FIXED_DELAY_MS: ${SCRAPING_FIXED_DELAY_MS:-3600000}
     volumes:
       - hire-radar-data:/app/data
     ports:

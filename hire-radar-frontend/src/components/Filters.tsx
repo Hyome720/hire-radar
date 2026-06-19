@@ -1,5 +1,4 @@
-import type { Company } from '../services/api'
-import { IconButton } from './IconButton'
+﻿import type { Company } from '../services/api'
 
 type Props = {
   companies: Company[]
@@ -7,12 +6,10 @@ type Props = {
   companyId?: number
   openOnly: boolean
   sortMode: 'latest' | 'deadline'
-  loading: boolean
   onQueryChange: (value: string) => void
   onCompanyChange: (value?: number) => void
   onOpenOnlyChange: (value: boolean) => void
   onSortModeChange: (value: 'latest' | 'deadline') => void
-  onScrape: () => void
 }
 
 export function Filters({
@@ -21,12 +18,10 @@ export function Filters({
   companyId,
   openOnly,
   sortMode,
-  loading,
   onQueryChange,
   onCompanyChange,
   onOpenOnlyChange,
   onSortModeChange,
-  onScrape,
 }: Props) {
   return (
     <div className="toolbar">
@@ -63,8 +58,6 @@ export function Filters({
           마감임박
         </button>
       </div>
-
-      <IconButton label={loading ? '수집중' : '수집'} icon="↻" onClick={onScrape} disabled={loading} />
     </div>
   )
 }

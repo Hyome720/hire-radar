@@ -1,4 +1,4 @@
-import axios from 'axios'
+﻿import axios from 'axios'
 
 export type Company = {
   id?: number
@@ -47,10 +47,5 @@ export async function getPostings(params: {
   openOnly?: boolean
 }) {
   const { data } = await api.get<PostingSummary[]>('/postings', { params })
-  return data
-}
-
-export async function scrapeNow() {
-  const { data } = await api.post<Posting[]>('/postings/scrape')
   return data
 }
